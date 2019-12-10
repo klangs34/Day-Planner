@@ -27,26 +27,30 @@ $(document).ready(function () {
         
         })
     }
+    //declare index vars
+    var getIndex
+    var currentTimeIndex
 
     //run loop to display hourly time from 9-5 along with note field and save button
     $.each(hourDisplay, function (i, time) {
  
         //format current time to look like hourDisplay
         var currentTime = currentHour + amPm.toUpperCase();
+        //first get the index of the iterated time that is not equal to the current
+        getIndex = hourDisplay.indexOf(currentTime);
+        currentTimeIndex = hourDisplay.indexOf(time);
 
         if (currentTime === time) {
             //define the input field to add style during loop based on current time
-            inputEl = `<input type='text' class='bg-primary col border p-3 note text-light' value='' data-time=${time} />`;
+            inputEl = `<input type='text' class='bg-danger col border p-3 note text-light' value='' data-time=${time} />`;
+            //capture index
         } else {
-            //for times other than the current time, turn them green or gray
-
-            //first get the index of the iterated time that is not equal to the current
-            var getIndex = currentTime.indexOf(hourDisplay)
-
+            //for times other than the current time, turn them blue or gray
+        
             //if in the work day time period but not the curren time and after the current iteration
-            if (getIndex !== -1 && (getIndex < (hourDisplay.length - 1))) {
+            if (getIndex !== -1 && (getIndex < currentTimeIndex)) {
                 //make the elements green to indicate availibility
-                inputEl = `<input type='text' class='bg-success col border p-3 note text-light' value='' data-time=${time} />`;
+                inputEl = `<input type='text' class='bg-info col border p-3 note text-light' value='' data-time=${time} />`;
             } else {
                 //set all other timeslots to gray
                 inputEl = `<input type='text' class='bg-secondary col border p-3 note text-dark' value='' data-time=${time} />`
