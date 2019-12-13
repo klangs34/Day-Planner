@@ -1,0 +1,17 @@
+@media screen and (max-width: 480px) {
+    body{
+        font-size: small;
+    }
+    .note{
+        display: flex;
+        flex-shrink: 3;
+    };
+    .save{
+        display: flex;
+        flex-shrink: 2;
+    }
+    .time{
+        display: flex;
+        flex-shrink: 2;
+    }
+}

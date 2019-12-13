@@ -64,7 +64,7 @@ $(document).ready(function () {
             ${time}
         </div>
         ${inputEl}
-        <button class="btn btn-success col-2 border-top border-bottom p-3 save">
+        <button class="btn-sm btn-success col-2 border-top border-bottom p-3 save">
             Save <i class="far fa-save"></i>
         </button>`);
         $('.calendar').append(row);
