@@ -3,7 +3,7 @@ Day Planner
 
 ### Let's get the day started!  Be Productive using [this](https://klangs34.github.io/Day-Planner/) simple day planner!
 
-## Color Legend:
+## Color Legend
 
 The calendar is color coded to distinguish the available timeslots.
 
