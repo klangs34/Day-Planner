@@ -1,7 +1,15 @@
 # Day-Planner
 Day Planner
 
+## Mission
+This page was designed to give the average person on the go an app where they can plan their day.  The goal was to experiment with ways utilize local storage and time management to build something dynamic yet simple.  The intent was not to be overly visual with the app, but to demonstrate useful functionality.
+
+## Technology 
+JQuery, Font Awesome, Moment.j and bootstrap
+
 ### Let's get the day started!  Be Productive using [this](https://klangs34.github.io/Day-Planner/) simple day planner!
+
+https://klangs34.github.io/Day-Planner/
 
 ## Color Legend
 
