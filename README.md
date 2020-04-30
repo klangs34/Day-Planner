@@ -11,7 +11,7 @@ JQuery, Font Awesome, Moment.j and bootstrap
 
 https://klangs34.github.io/Day-Planner/
 
-[image][./DayPlanner.gif]
+![Day Planner](./DayPlanner.gif)
 
 ## Color Legend
 
