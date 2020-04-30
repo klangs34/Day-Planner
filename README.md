@@ -17,9 +17,9 @@ https://klangs34.github.io/Day-Planner/
 
 The calendar is color coded to distinguish the available timeslots.
 
-Grey timeslots indicate that the current time is beyond that time period (no need to schedule there:-)).
-Red indicates the current timeslot
-Turquoise indicates future timeslots
+1. Grey timeslots indicate that the current time is beyond that time period (no need to schedule there:-)).
+1. Red indicates the current timeslot
+1. Turquoise indicates future timeslots
 
 ## How to use
 
@@ -28,3 +28,5 @@ Turquoise indicates future timeslots
 1. Click save.
 
 1. You're done!  
+
+1. Check the app throughout the day to make sure you are making appointments!!
