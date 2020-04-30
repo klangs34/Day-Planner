@@ -11,6 +11,8 @@ JQuery, Font Awesome, Moment.j and bootstrap
 
 https://klangs34.github.io/Day-Planner/
 
+[image][./DayPlanner.gif]
+
 ## Color Legend
 
 The calendar is color coded to distinguish the available timeslots.
