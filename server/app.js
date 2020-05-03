@@ -27,6 +27,10 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
+app.get("/create-account", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/createAccount.html"));
+});
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   let err = new Error("Not Found");
