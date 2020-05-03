@@ -4,6 +4,7 @@ const cors = require("cors");
 const logger = require("morgan");
 const path = require("path");
 const mongoose = require("mongoose");
+const passport = require("../auth/index");
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dayplanner", {
   useNewUrlParser: true,
@@ -18,6 +19,8 @@ app.use(logger("dev"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, "../public")));
 
