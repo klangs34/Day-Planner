@@ -1,42 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Day Planner</title>
 
     <!-- Added link to the jQuery Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Font awesome -->
-    <script src="https://kit.fontawesome.com/296e540bc3.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/296e540bc3.js"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Added a link to Bootstrap-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
 
     <!-- Momentjs -->
     <script src="https://momentjs.com/downloads/moment.js"></script>
 
     <!-- custom css file -->
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-</head>
-
-<body>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand">Workday Scheduler</a>
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Create Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Signin</a>
+        </li>
+      </ul>
+    </nav>
     <div>
-        <header class="text-center p-5 border-bottom">
-            <h1>Work Day Scheduler</h1>
-            <h6>A single calendar app for scheduling your work day</h6>
-            <h6 class="date"></h6>
-        </header>
+      <header class="text-center p-5 border-bottom">
+        <h1>Workday Scheduler</h1>
+        <h6>A single calendar app for scheduling your work day</h6>
+        <h6 class="date"></h6>
+      </header>
     </div>
-    <div class="container p-5 calendar">
+    <div class="container p-5 calendar"></div>
 
+    <div class="text-center">
+      Need More functionality? <a href="#">Create an account!</a>
     </div>
 
     <script src="./script.js"></script>
-</body>
-
+  </body>
 </html>
