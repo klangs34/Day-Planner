@@ -21,6 +21,14 @@ The calendar is color coded to distinguish the available timeslots.
 1. Red indicates the current timeslot
 1. Turquoise indicates future timeslots
 
+## Instatllation
+
+1.  clone repository
+
+1.  run npm install
+
+1.  npm start
+
 ## How to use
 
 1. click the intended hour slot to record a note for that time period.
