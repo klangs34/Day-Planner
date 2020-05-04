@@ -1,6 +1,6 @@
 const express = require("express");
 const Router = express.Router();
-const passport = require('../auth');
+const passport = require("../auth");
 
 const db = require("../models");
 
@@ -12,11 +12,7 @@ Router.post("/create-account", (req, res) => {
 });
 
 Router.post("/login", passport.authenticate("local"), (req, res) => {
-  // db.User.find(req.body).then(data => {
-  //     console.log(data);
-  //     res.json(data);
-  // })
-  console.log("login successful");
+  res.json(req.user);
 });
 
 module.exports = Router;
