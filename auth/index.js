@@ -4,22 +4,24 @@ const db = require("../models");
 
 passport.use(
   new LocalStrategy(function (username, password, done) {
+    //console.log(username);
     db.User.findOne({ username: username }, async function (err, user) {
-        if (err) {
-          return done(err);
+      if (err) {
+        console.log(err);
+        return done(err);
+      }
+      if (!user) {
+        return done(null, false, { message: "Incorrect username." });
+      }
+      try {
+        let isMatch = await user.comparePassword(password);
+        if (!isMatch) {
+          return done(null, false, { message: "Incorrect password." });
         }
-        if (!user) {
-          return done(null, false, { message: "Incorrect username." });
-        }
-        try {
-          let isMatch = await user.comparePassword(password);
-          if (!isMatch) {
-            return done(null, false, { message: "Incorrect password." });
-          }
-          return done(null, user);
-        } catch (error) {
-            return done(err);
-        }
+        return done(null, user);
+      } catch (error) {
+        return done(err);
+      }
     });
   })
 );

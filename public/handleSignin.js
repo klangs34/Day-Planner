@@ -7,7 +7,6 @@ $(document).ready(function () {
     };
     $.post("api/login", loginInfo, (response) => {
       //console.log(response);
-      window.location.replace("/");
     });
   });
 });

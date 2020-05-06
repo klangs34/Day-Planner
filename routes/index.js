@@ -1,6 +1,7 @@
 const express = require("express");
 const Router = express.Router();
 const passport = require("../auth");
+const path = require("path");
 
 const db = require("../models");
 
@@ -13,6 +14,7 @@ Router.post("/create-account", (req, res) => {
 
 Router.post("/login", passport.authenticate("local"), (req, res) => {
   res.json(req.user);
+  //res.sendFile(path.join(__dirname, "../public/memberIndex.html"));
 });
 
 module.exports = Router;
