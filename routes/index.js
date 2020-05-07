@@ -14,7 +14,7 @@ Router.post("/create-account", (req, res) => {
 
 Router.post("/login", passport.authenticate("local"), (req, res) => {
   res.json(req.user);
-  //res.sendFile(path.join(__dirname, "../public/memberIndex.html"));
+  //res.render("memberIndex");
 });
 
 module.exports = Router;

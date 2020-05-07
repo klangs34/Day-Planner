@@ -67,13 +67,14 @@ $(document).ready(function () {
 
     //create a row with 3 columns
     var row = $(`<div class='row'>
-    <div class="col-2 text-right border-top border-bottom p-3 time">
-            ${time}
-        </div>
-        ${inputEl}
-        <button class="btn-sm btn-success col-2 border-top border-bottom p-3 save">
-            Save <i class="far fa-save"></i>
-        </button>`);
+      <div class="col-2 text-right border-top border-bottom p-3 time">
+      <img class='d-flex align-self-center mr-auto' src='https://img.icons8.com/material-sharp/24/000000/alarm-add.png'/>
+              ${time}
+          </div>
+          ${inputEl}
+          <button class="btn-sm btn-success col-2 border-top border-bottom p-3 save">
+              Save <i class="far fa-save"></i>
+          </button>`);
     $(".calendar").append(row);
   });
 

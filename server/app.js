@@ -6,6 +6,8 @@ const path = require("path");
 const mongoose = require("mongoose");
 const passport = require("../auth/index");
 const session = require("express-session");
+const exphbs = require("express-handlebars");
+const isAuthenticated = require("../middleware/isAuthenticated");
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dayplanner", {
   useNewUrlParser: true,
@@ -25,13 +27,16 @@ app.use(session({ secret: "planplan", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use("/api", APIRoutes);
+
 app.use(express.static(path.join(__dirname, "../public")));
 
-app.use("/api", APIRoutes);
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 app.get("/", (req, res) => {
   console.log(req);
-  res.sendFile(path.join(__dirname, "../public/index.html"));
+  res.sendFile("index.html");
 });
 
 app.get("/create-account", (req, res) => {
@@ -40,6 +45,10 @@ app.get("/create-account", (req, res) => {
 
 app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/login.html"));
+});
+
+app.get("/member-access", isAuthenticated, (req, res) => {
+  res.render("memberIndex");
 });
 
 // catch 404 and forward to error handler

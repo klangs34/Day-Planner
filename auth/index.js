@@ -4,10 +4,10 @@ const db = require("../models");
 
 passport.use(
   new LocalStrategy(function (username, password, done) {
-    //console.log(username);
+    console.log(username);
     db.User.findOne({ username: username }, async function (err, user) {
+      console.log(user);
       if (err) {
-        console.log(err);
         return done(err);
       }
       if (!user) {
@@ -31,7 +31,7 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, user) {
+  db.User.findById(id, function (err, user) {
     done(err, user);
   });
 });
