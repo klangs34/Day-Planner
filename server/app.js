@@ -47,6 +47,12 @@ app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/login.html"));
 });
 
+// Route for logging user out
+app.get("/logout", function (req, res) {
+  req.logout();
+  res.redirect("/");
+});
+
 app.get("/member-access", isAuthenticated, (req, res) => {
   res.render("memberIndex");
 });
