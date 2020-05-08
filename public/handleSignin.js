@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $("#signin").on("click", (e) => {
-    //e.preventDefault();
+    e.preventDefault();
     const loginInfo = {
       username: $("#username").val().trim(),
       password: $("#password").val().trim(),
