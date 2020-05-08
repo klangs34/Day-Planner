@@ -8,7 +8,8 @@ const db = require("../models");
 Router.post("/create-account", (req, res) => {
   db.User.create(req.body).then((data) => {
     //console.log(data);
-    res.json(data);
+    //res.json(data);
+    res.redirect(307, "/api/login");
   });
 });
 
