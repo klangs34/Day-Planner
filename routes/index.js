@@ -13,7 +13,7 @@ const oauth2Client = new google.auth.OAuth2(
 
 const url = oauth2Client.generateAuthUrl({
   // 'online' (default) or 'offline' (gets refresh_token)
-  access_type: "online",
+  access_type: "offline",
 
   // If you only need one scope you can pass it as a string
   scope: "https://www.googleapis.com/auth/calendar",
