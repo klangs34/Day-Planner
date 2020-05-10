@@ -1,13 +1,16 @@
 # Day-Planner
+
 Day Planner
 
 ## Mission
-This page was designed to give the average person on the go an app where they can plan their day.  The goal was to experiment with ways utilize local storage and time management to build something dynamic yet simple.  The intent was not to be overly visual with the app, but to demonstrate useful functionality.
 
-## Technology 
-JQuery, Font Awesome, Moment.j and bootstrap
+This page was designed to give the average person on the go an app where they can plan their day. The goal was to experiment with ways utilize local storage, time management and a 3rd party API to build something simple yet dynamic. The intent was not to be overly visual with the app, but to demonstrate useful functionality.
 
-### Let's get the day started!  Be Productive using [this](https://klangs34.github.io/Day-Planner/) simple day planner!
+## Technology
+
+JQuery, Font Awesome, Moment.j, googleapis, and bootstrap
+
+### Let's get the day started! Be Productive using [this](https://klangs34.github.io/Day-Planner/) simple day planner!
 
 https://klangs34.github.io/Day-Planner/
 
@@ -35,6 +38,10 @@ The calendar is color coded to distinguish the available timeslots.
 
 1. Click save.
 
-1. You're done!  
+1. If you want to sync the event with your primary calender(i.e. google calendar), create an account or login
+
+1. Click the available "add alarm icon(s)" to pass the event(s) off to your primary calendar (after accepting app authorization to access your calendar)
+
+1. You're done!
 
 1. Check the app throughout the day to make sure you are making appointments!!
