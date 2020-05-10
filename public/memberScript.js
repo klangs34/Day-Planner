@@ -18,6 +18,8 @@ $(document).ready(function () {
   var savedNote = JSON.parse(localStorage.getItem("savedNote")) || [];
   //declare input element variable
   var inputEl;
+  //delcare alram icon var
+  var AlarmIco;
 
   //get the local storage values
   var savedCalendarNotes = JSON.parse(localStorage.getItem("savedNote"));
@@ -49,17 +51,25 @@ $(document).ready(function () {
     currentTimeIndex = hourDisplay.indexOf(time);
 
     if (currentTime === time) {
+      //Add alarm icon to the input element as functional
+      AlarmIco =
+        "<img id='google' class='d-flex align-self-center mr-auto' src='https://img.icons8.com/material-sharp/24/000000/alarm-add.png'/>";
       //define the input field to add style during loop based on current time
       inputEl = `<input type='text' class='bg-danger col border p-3 note text-light' value='' data-time=${time} />`;
       //capture index
     } else {
       //for times other than the current time, turn them blue or gray
-
       //if in the work day time period but not the curren time and after the current iteration
       if (getIndex !== -1 && getIndex < currentTimeIndex) {
+        //Add alarm icon to the input element as functional
+        AlarmIco =
+          "<img id='google' class='d-flex align-self-center mr-auto' src='https://img.icons8.com/material-sharp/24/000000/alarm-add.png'/>";
         //make the elements green to indicate availibility
         inputEl = `<input type='text' class='bg-info col border p-3 note text-light' value='' data-time=${time} />`;
       } else {
+        //Add alarm icon to the input element as disabled
+        AlarmIco =
+          "<img id='none' class='d-flex align-self-center mr-auto' src='https://img.icons8.com/material-sharp/24/000000/alarm-off.png' />";
         //set all other timeslots to gray
         inputEl = `<input type='text' class='bg-secondary col border p-3 note text-dark' value='' data-time=${time} />`;
       }
@@ -68,7 +78,7 @@ $(document).ready(function () {
     //create a row with 3 columns
     var row = $(`<div class='row'>
       <div class="col-2 text-right border-top border-bottom p-3 time">
-      <img id='google' class='d-flex align-self-center mr-auto' src='https://img.icons8.com/material-sharp/24/000000/alarm-add.png'/>
+              ${AlarmIco}
               ${time}
           </div>
           ${inputEl}
@@ -100,15 +110,50 @@ $(document).ready(function () {
 
   $(document).on("click", "#google", function () {
     $.get("/api/url").then((response) => {
-      window.location.replace(response);
+      const authToken = JSON.parse(localStorage.getItem("gAPI"));
+      //if user has not consented to google access, send them to the consent page
+      if (!authToken.access_token) {
+        window.location.replace(response);
+      } else {
+        //allow them to save a non-empty event
+        const getEventText = $(this).children().prevObject[0].parentElement.nextSibling
+        .parentElement.childNodes[3].value
+        if (getEventText.trim() === "") {
+          //do nothing
+        } else {
+          $.ajax({
+            method: "POST",
+            url:
+              `https://www.googleapis.com/calendar/v3/calendars/primary/events/quickAdd?text=${getEventText}&sendUpdates=all`,
+            headers: {
+              ContentType: "application/json",
+              Authorization: `Bearer ${authToken.access_token}`,
+            },
+          }).then((data) => console.log(data));
+        }
+      }
     });
   });
 
-  $("#test").on("click", function () {
-    $.post(
-      "https://www.googleapis.com/calendar/v3/calendars/primary/events/quickAdd&text=it's working!&sendUpdates=all"
-    ).then((data) => console.log(data));
-  });
+  // $("#test").on("click", function () {
+  //   const authToken = JSON.parse(localStorage.getItem("gAPI"));
+  //   $.ajax({
+  //     method: "POST",
+  //     url:
+  //       "https://www.googleapis.com/calendar/v3/calendars/primary/events/quickAdd?text='this is a test'&sendUpdates=all",
+  //     headers: {
+  //       ContentType: "application/json",
+  //       Authorization: `Bearer ${authToken.access_token}`,
+  //     },
+  //   }).then((data) => console.log(data));
+  // });
+
+  function getToken() {
+    $.get("/get-token").then((data) => {
+      localStorage.setItem("gAPI", JSON.stringify(data));
+    });
+  }
 
   addNotes();
+  getToken();
 });
