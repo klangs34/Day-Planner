@@ -116,20 +116,21 @@ $(document).ready(function () {
         window.location.replace(response);
       } else {
         //allow them to save a non-empty event
-        const getEventText = $(this).children().prevObject[0].parentElement.nextSibling
-        .parentElement.childNodes[3].value
+        const getEventText = $(this).children().prevObject[0].parentElement
+          .nextSibling.parentElement.childNodes[3].value;
         if (getEventText.trim() === "") {
           //do nothing
         } else {
           $.ajax({
             method: "POST",
-            url:
-              `https://www.googleapis.com/calendar/v3/calendars/primary/events/quickAdd?text=${getEventText}&sendUpdates=all`,
+            url: `https://www.googleapis.com/calendar/v3/calendars/primary/events/quickAdd?text=${getEventText}&sendUpdates=all`,
             headers: {
               ContentType: "application/json",
               Authorization: `Bearer ${authToken.access_token}`,
             },
-          }).then((data) => console.log(data));
+          }).then((data) => {
+            //console.log(data)
+          });
         }
       }
     });
