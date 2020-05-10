@@ -73,7 +73,7 @@ app.get("/get-token", isAuthenticated, async (req, res, next) => {
       const oauth2Client = new google.auth.OAuth2(
         process.env.CLIENT_ID,
         process.env.CLIENT_SECRET,
-        "http://localhost:8080/member-access"
+        "https://workday-planner.herokuapp.com/member-access"
       );
       // This will provide an object with the access_token and refresh_token.
       // Save these somewhere safe so they can be used at a later time.
