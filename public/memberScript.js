@@ -68,7 +68,7 @@ $(document).ready(function () {
     //create a row with 3 columns
     var row = $(`<div class='row'>
       <div class="col-2 text-right border-top border-bottom p-3 time">
-      <img class='d-flex align-self-center mr-auto' src='https://img.icons8.com/material-sharp/24/000000/alarm-add.png'/>
+      <img id='google' class='d-flex align-self-center mr-auto' src='https://img.icons8.com/material-sharp/24/000000/alarm-add.png'/>
               ${time}
           </div>
           ${inputEl}
@@ -96,6 +96,18 @@ $(document).ready(function () {
 
     //console.log($(this).prev().val())
     localStorage.setItem("savedNote", JSON.stringify(savedNote));
+  });
+
+  $(document).on("click", "#google", function () {
+    $.get("/api/url").then((response) => {
+      window.location.replace(response);
+    });
+  });
+
+  $("#test").on("click", function () {
+    $.post(
+      "https://www.googleapis.com/calendar/v3/calendars/primary/events/quickAdd&text=it's working!&sendUpdates=all"
+    ).then((data) => console.log(data));
   });
 
   addNotes();

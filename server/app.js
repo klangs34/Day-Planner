@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -8,10 +9,15 @@ const passport = require("../auth/index");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const isAuthenticated = require("../middleware/isAuthenticated");
+const { google } = require("googleapis");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dayplanner", {
+mongoose.connect("mongodb://localhost/dayplanner", {
   useNewUrlParser: true,
 });
+
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dayplanner", {
+//   useNewUrlParser: true,
+// });
 
 const PORT = process.env.PORT || 8080;
 
@@ -53,7 +59,22 @@ app.get("/logout", function (req, res) {
   res.redirect("/");
 });
 
-app.get("/member-access", isAuthenticated, (req, res) => {
+app.get("/member-access", isAuthenticated, async (req, res) => {
+  const { code } = req.query;
+
+  if (code) {
+    const oauth2Client = new google.auth.OAuth2(
+      process.env.CLIENT_ID,
+      process.env.CLIENT_SECRET,
+      "http://localhost:8080/member-access"
+    );
+    // This will provide an object with the access_token and refresh_token.
+    // Save these somewhere safe so they can be used at a later time.
+    const { tokens } = await oauth2Client.getToken(code);
+    oauth2Client.setCredentials(tokens);
+
+    console.log(tokens);
+  }
   res.render("memberIndex");
 });
 

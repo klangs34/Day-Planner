@@ -1,7 +1,23 @@
+require("dotenv").config();
 const express = require("express");
 const Router = express.Router();
 const passport = require("../auth");
 const path = require("path");
+const { google } = require("googleapis");
+
+const oauth2Client = new google.auth.OAuth2(
+  process.env.CLIENT_ID,
+  process.env.CLIENT_SECRET,
+  "http://localhost:8080/member-access"
+);
+
+const url = oauth2Client.generateAuthUrl({
+  // 'online' (default) or 'offline' (gets refresh_token)
+  access_type: "offline",
+
+  // If you only need one scope you can pass it as a string
+  scope: "https://www.googleapis.com/auth/calendar",
+});
 
 const db = require("../models");
 
@@ -18,4 +34,7 @@ Router.post("/login", passport.authenticate("local"), (req, res) => {
   //res.render("memberIndex");
 });
 
+Router.get("/url", (req, res) => {
+  res.json(url);
+});
 module.exports = Router;
