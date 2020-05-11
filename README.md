@@ -12,7 +12,7 @@ JQuery, Font Awesome, Moment.j, googleapis, and bootstrap
 
 ### Let's get the day started! Be Productive using [this](https://klangs34.github.io/Day-Planner/) simple day planner!
 
-https://klangs34.github.io/Day-Planner/
+https://workday-planner.herokuapp.com/
 
 ![Day Planner](./DayPlanner.gif)
 
