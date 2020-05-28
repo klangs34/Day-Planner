@@ -24,7 +24,7 @@ The calendar is color coded to distinguish the available timeslots.
 1. Red indicates the current timeslot
 1. Turquoise indicates future timeslots
 
-## Instatllation
+## Installation
 
 1.  clone repository
 
